@@ -272,6 +272,8 @@ def serve(python: Path, cloudflared: str, password: str, bot: TelegramBot):
         "RVC_ACCESS_PASSWORD": password,
         "OVC_HOST": "127.0.0.1",
         "OVC_PORT": "8000",
+        "OVC_CHUNK_SIZE": "2048",
+        "OVC_SAMPLE_RATE": "40000",
         "OVC_HUBERT_PATH": str(OVC_DIR / "models" / "assets" / "hubert_base.pt"),
         "OVC_RMVPE_ROOT": str(OVC_DIR / "models" / "assets" / "rmvpe"),
         "OVC_UPDATE_CHECK_ENABLED": "false",
