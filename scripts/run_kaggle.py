@@ -118,7 +118,9 @@ def install_runtime():
     print("[2/7] Ставлю Python 3.10 для совместимости RVC…", flush=True)
     run([sys.executable, "-m", "pip", "install", "-q", "uv"])
     run([sys.executable, "-m", "uv", "python", "install", "3.10.20"])
-    run([sys.executable, "-m", "uv", "venv", "--python", "3.10.20", str(VENV_DIR)])
+    # uv does not seed pip by default. The following python -m pip commands
+    # require it to be present in the new environment.
+    run([sys.executable, "-m", "uv", "venv", "--seed", "--python", "3.10.20", str(VENV_DIR)])
     python = VENV_DIR / "bin" / "python"
     run([python, "-m", "pip", "install", "--upgrade", "pip", "wheel", "setuptools"])
 
